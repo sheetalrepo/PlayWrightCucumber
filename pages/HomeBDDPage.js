@@ -15,14 +15,26 @@ class HomeBDDPage{
         
     }
 
+
     /**
-     * TODO: From Config
+     * Default: Prod URL
+     * 
+     * GitBash:
+     * BASE_URL=https://qa.practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit
+     * BASE_URL=https://www.google.com/ npx cucumber-js --tags="@sanity" --exit
      */
     async openBaseURL() {
-        //console.log(">>> Open base url")
-        await this.page.goto('https://practice.expandtesting.com/');
+        const baseUrl = process.env.BASE_URL || 'https://practice.expandtesting.com/';
+        console.log(`>>> Opening Base URL: ${baseUrl}`);
+        await this.page.goto(baseUrl);
         await this.h1TextHomePage.waitFor();
     }
+    
+    //async openBaseURL() {
+    //     //console.log(">>> Open base url")
+    //     await this.page.goto('https://practice.expandtesting.com/');
+    //     await this.h1TextHomePage.waitFor();
+    // }
 
     async goToLoginPage() {
         await this.loginPageLink.click();

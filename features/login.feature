@@ -1,6 +1,6 @@
 Feature: User Login Feature
 
-  @reg
+  @reg @abc
   Scenario: Successful login to the website 1 
     Given the user opens the website  
     When the user navigates to the login page  
