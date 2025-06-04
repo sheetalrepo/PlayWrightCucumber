@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+      "run-sanity-tcs-1": "npx cucumber-js --tags=@sanity --require './support/CustomWorld.js' --require './support/Hooks.js' --require './step-definitions/*.js' --exit",
+      "run-sanity-tcs-2": "npx cucumber-js --tags=@sanity --exit",
+      "run-reg-html-tcs-3": "npx cucumber-js --tags=@reg --exit --parallel 2 --format html:cucumber_report.html"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -34,24 +34,52 @@ npx cucumber-js --dry-run               | steps will not execute
 npx cucumber-js --parallel 1            | sequencial mode
 npx cucumber-js --parallel 2            | two threads 
 npx cucumber-js --exit --parallel 2     | parallel + browser exit 
+npx cucumber-js features/login.feature --exit           | Pass feature file name
+npx cucumber-js --tags="@sanity" --exit                 | Single Tags
+npx cucumber-js --tags="@sanity and @reg" --exit        | Mult Tags: AND Gate 
+npx cucumber-js --tags="@sanity or @reg" --exit         | Mult Tags: OR Gate        
+npx cucumber-js --tags="@sanity" --retry 1 --exit       | Retry         
 
-#cucumber.js: config can also be given in this file 
+#cucumber.js: imp config in case TCs are not running normally
 cucumber.js
 {
   "default": "--parallel 2"
 }
 
 
+#Run TCs via NPM + package.json 
+- update script tag inside package.json
+- Run:
+        npm run run-sanity-tcs-1 
+        npm run run-sanity-tcs-2     
+
+package.json:
+"scripts": {
+      "run-sanity-tcs-1": "npx cucumber-js --tags=@sanity --require './support/CustomWorld.js' --require './support/Hooks.js' --require './step-definitions/*.js' --exit",
+      "run-sanity-tcs-2": "npx cucumber-js --tags=@sanity --exit"
+  },
+
+============================================================================================================
+============================================================================================================
+#Report Generation:
+Basic HTML Report by Cucumber
+============================================================================================================
+npx cucumber-js --tags="@sanity or @reg" --exit --format html:cucumber_report.html
+               copy path "cucumber_report.html" and open in any browser  
+
+
+
+
 ============================================================================================================
 ============================================================================================================
 #TODO:
 ============================================================================================================
-1. Tags 
-2. pass baseURL 
-3. pass browser
-4. Report HTML 
-5. Screenshots After
-
+1. Tags    - DONE
+2. Screenshots After - DONE
+3. Report HTML  - DONE
+4. Retry - DONE                  https://github.com/cucumber/cucumber-js/blob/main/docs/retry.md
+5. pass baseURL 
+6. pass browser, headless
 
 
 ============================================================================================================
@@ -60,6 +88,7 @@ cucumber.js
 ============================================================================================================
 #Adv:
 1. Easy to read feature files 
+2. scenario will run in parallel
 
 #DisAdv:
 1. No default reporting

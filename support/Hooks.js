@@ -23,6 +23,8 @@ AfterAll(async function () {
 Before(async function () {
   await console.log("----------------------------------------->>> Before: Initializing Browser and Page Objects");
   this.browser = await webkit.launch({ headless: false });
+  //this.browser = await chromium.launch({ headless: false });
+  //this.browser = await firefox.launch({ headless: false });
   const context = await this.browser.newContext();
   this.page = await context.newPage();
 
