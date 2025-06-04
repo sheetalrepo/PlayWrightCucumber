@@ -25,7 +25,8 @@ class HomeBDDPage{
      */
     async openBaseURL() {
         const baseUrl = process.env.BASE_URL || 'https://practice.expandtesting.com/';
-        console.log(`>>> Opening Base URL: ${baseUrl}`);
+        //console.log(`>>> Opening Base URL: ${baseUrl}`);
+        await console.log(`----------------------------------------->>> BASE URL: ${baseUrl}`);
         await this.page.goto(baseUrl);
         await this.h1TextHomePage.waitFor();
     }

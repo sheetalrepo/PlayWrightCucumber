@@ -75,12 +75,20 @@ npx cucumber-js --tags="@sanity or @reg" --exit --format html:cucumber_report.ht
 ============================================================================================================
 #Run Time Param
 ============================================================================================================
-#Using Git Bash Terminal 
+#Pass Base URL 
+Using Git Bash Terminal 
 BASE_URL=https://www.google.com/ npx cucumber-js --tags="@sanity" --exit
 BASE_URL=https://qa.practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit
 
 
+#Pass Browser
+Using Git Bash Terminal 
+BROWSER=chromium npx cucumber-js --tags="@sanity" --exit
+BROWSER=chromium BASE_URL=https://www.google.com/ npx cucumber-js --tags="@sanity" --exit
+BROWSER=chromium BASE_URL=https://practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit
 
+#Pass Headless Mode 
+Using Git Bash Terminal 
 
 ============================================================================================================
 ============================================================================================================
