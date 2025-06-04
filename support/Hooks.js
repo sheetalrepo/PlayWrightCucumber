@@ -5,8 +5,10 @@ const {Status} = require('@cucumber/cucumber');
 const { webkit, chromium, firefox } = require('playwright');
 const POBDDManager = require('../pages/POBDDManager.js');
 
-//Default Browser
+//Default Browser = WEBKIT & Default Mode = UI 
 const browserType = process.env.BROWSER || 'webkit';
+const isHeadless = process.env.HEADLESS ? process.env.HEADLESS.toLowerCase() === 'true' : false;
+
 
 BeforeAll(async function () {
   await console.log("----------------------------------------------------->>> Before All");
@@ -24,16 +26,14 @@ AfterAll(async function () {
 Before(async function () {
   await console.log("----------------------------------------->>> Before: Initializing Browser and Page Objects");
   await console.log(`----------------------------------------->>> SELECTED BROWSER: ${browserType}`);
+  await console.log(`----------------------------------------->>> HEADLESS MODE: ${isHeadless}`);
 
   //this.browser = await webkit.launch({ headless: false });
-  //this.browser = await chromium.launch({ headless: false });
-  //this.browser = await firefox.launch({ headless: false });
-
   this.browser = await {
     'chromium': chromium,
     'firefox': firefox,
     'webkit': webkit
-  }[browserType].launch({ headless: false });
+  }[browserType].launch({ headless: isHeadless });
 
   const context = await this.browser.newContext();
   this.page = await context.newPage();

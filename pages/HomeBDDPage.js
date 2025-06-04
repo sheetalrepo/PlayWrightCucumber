@@ -17,7 +17,7 @@ class HomeBDDPage{
 
 
     /**
-     * Default: Prod URL
+     * Default URL: Prod URL
      * 
      * GitBash:
      * BASE_URL=https://qa.practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit

@@ -87,8 +87,16 @@ BROWSER=chromium npx cucumber-js --tags="@sanity" --exit
 BROWSER=chromium BASE_URL=https://www.google.com/ npx cucumber-js --tags="@sanity" --exit
 BROWSER=chromium BASE_URL=https://practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit
 
+
 #Pass Headless Mode 
 Using Git Bash Terminal 
+   1) UI will open in case nothing sent:     
+        BROWSER=chromium BASE_URL=https://practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit
+   2) UI will open in case HEADLESS=false:     
+        BROWSER=chromium HEADLESS=false BASE_URL=https://practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit    
+   3) UI will NOT open in case HEADLESS=true:     
+        BROWSER=chromium HEADLESS=true BASE_URL=https://practice.expandtesting.com/ npx cucumber-js --tags="@sanity" --exit    
+
 
 ============================================================================================================
 ============================================================================================================
